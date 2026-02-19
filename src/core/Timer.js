@@ -29,7 +29,6 @@ export class Timer {
 
     const duration = end - start;
 
-    // Also write to native Performance Timeline for DevTools visibility
     try {
       performance.measure(label, { start, duration });
     } catch {
@@ -61,7 +60,6 @@ export class Timer {
         throw err;
       }
 
-      // Handle async functions (returns Promise)
       if (result && typeof result.then === 'function') {
         return result.then(
           (val) => {
